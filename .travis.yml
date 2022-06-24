@@ -3,7 +3,14 @@ node_js:
   - "12"
 services:
   - docker
-before_install:
-  - docker pull debricked/debricked-cli
-script:
-  - docker run -it --rm -v $PWD:/data debricked/debricked-cli debricked:scan "" ${DEBRICKED_TOKEN} ${REPOSITORY} ${COMMIT} null cli
+install:
+- docker pull debricked/debricked-cli
+#install: skip
+script: env > env.list
+  - docker run -it --rm -v  -e ./env.list $PWD:/data debricked/debricked-cli debricked:scan null cli
+  - env:
+    - USERNAME: ""
+    - DEBRICKED_TOKEN: $(DEBRICKED_TOKEN)
+    - repository_name: ${REPOSITORY}
+    - commit_name: ${COMMIT}
+#docker run -it --rm -v $PWD:/data debricked/debricked-cli debricked:scan USERNAME="" PASSWORD=DEBRICKED_TOKEN repository_name=REPOSITORY  commit_name=COMMIT null cli
