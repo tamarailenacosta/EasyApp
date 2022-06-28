@@ -3,11 +3,9 @@ node_js:
   - "estable"
 services:
   - docker
-install:
-- docker pull debricked/debricked-cli
-#install: skip
+install: skip
 script: env > env.list
-  - docker run -it --rm -v  -e ./env.list $PWD:/data debricked/debricked-cli debricked:scan null cli
+  - docker run -it --rm -v  -e ./env.list $PWD:/data debricked:scan null cli
      env:
        - USERNAME: ""
        - DEBRICKED_TOKEN: $(DEBRICKED_TOKEN)
