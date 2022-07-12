@@ -9,7 +9,7 @@ pipeline {
         }
         stage('see credencials') {
             steps {
-                sh '$DEBRICKED_CREDENTIALS_USR && $GIT_COMMIT'
+                sh '$GIT_COMMIT'
             }
         }
         
