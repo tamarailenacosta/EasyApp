@@ -19,6 +19,7 @@ pipeline {
                 }
             }
             steps {
+                echo "ESTE ES EL USER $DEBRICKED_CREDENTIALS_USR"
                 sh "bash /home/entrypoint.sh debricked:scan $DEBRICKED_CREDENTIALS_USR $DEBRICKED_CREDENTIALS_PSW EasyApp $GIT_COMMIT null cli"
             }
         }
