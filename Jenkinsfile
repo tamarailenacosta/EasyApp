@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                sh '$GIT_COMMIT'
+                sh 'print GIT_COMMIT ${env.GIT_COMMIT}'
                 sh 'bash /home/entrypoint.sh debricked:scan $DEBRICKED_CREDENTIALS_USR $DEBRICKED_CREDENTIALS_PSW EasyApp $GIT_COMMIT null cli'
             }
         }
