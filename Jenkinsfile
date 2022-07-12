@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('see variables') {
             steps {
-                echo 'ESTE ES EL GIT_COMMIT ${GIT_COMMIT}'
+                echo "ESTE ES EL GIT_COMMIT ${env.GIT_COMMIT}"
             }
         }
         stage('Vulnerability scan') {
@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'bash /home/entrypoint.sh debricked:scan $DEBRICKED_CREDENTIALS_USR $DEBRICKED_CREDENTIALS_PSW EasyApp $GIT_COMMIT null cli'
+                sh "bash /home/entrypoint.sh debricked:scan $DEBRICKED_CREDENTIALS_USR $DEBRICKED_CREDENTIALS_PSW EasyApp $GIT_COMMIT null cli"
             }
         }
     }
