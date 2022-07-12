@@ -1,20 +1,20 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
-        stage('Vulnerability scan') {
-            environment {
-                DEBRICKED_CREDENTIALS = credentials('debricked-creds')
-            }
-
-            agent {
-                docker {
-                    image 'debricked/debricked-cli'
-                    args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
-                }
-            }
+        stage('Build') {
             steps {
-                sh 'bash /home/entrypoint.sh debricked:scan "$DEBRICKED_CREDENTIALS_USR" "$DEBRICKED_CREDENTIALS_PSW" example-jenkins "$GIT_COMMIT" null cli'
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
