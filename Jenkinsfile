@@ -7,8 +7,6 @@ pipeline {
                 sh 'env'
             }
         }
-    }
-    stages {
         stage('Vulnerability scan') {
             environment {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
