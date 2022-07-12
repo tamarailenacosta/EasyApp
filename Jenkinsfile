@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('see variables') {
             steps {
-                echo "ESTE ES EL GIT_COMMIT ${env.GIT_COMMIT}"
+                sh 'ESTE ES EL GIT_COMMIT ${env.GIT_COMMIT}'
             }
         }
         stage('Vulnerability scan') {
@@ -12,15 +12,14 @@ pipeline {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
             }
 
-            /*agent {
+            agent {
                 docker {
                     image 'debricked/debricked-cli'
                     args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
                 }
-            }*/
+            }
             steps {
-                echo "ESTE ES EL USER $DEBRICKED_CREDENTIALS_USR"
-               /* sh "bash /home/entrypoint.sh debricked:scan $DEBRICKED_CREDENTIALS_USR $DEBRICKED_CREDENTIALS_PSW EasyApp $GIT_COMMIT null cli" */
+               sh 'bash /home/entrypoint.sh debricked:scan $DEBRICKED_CREDENTIALS_USR $DEBRICKED_CREDENTIALS_PSW EasyApp $GIT_COMMIT null cli'
             }
         }
     }
