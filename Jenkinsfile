@@ -2,11 +2,6 @@ pipeline {
     agent any
     
     stages {
-        stage('see variables') {
-            steps {
-                sh '$GIT_COMMIT'
-            }
-        }
         stage('Vulnerability scan') {
             environment {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
