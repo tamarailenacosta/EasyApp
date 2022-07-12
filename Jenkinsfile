@@ -1,20 +1,20 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('Vulnerability scan') {
+            environment {
+                DEBRICKED_CREDENTIALS = credentials('debricked-creds')
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+
+            agent {
+                docker {
+                    image 'debricked/debricked-cli'
+                    args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
+                }
             }
-        }
-        stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'bash /home/entrypoint.sh debricked:scan "$DEBRICKED_CREDENTIALS_USR" "$DEBRICKED_CREDENTIALS_PSW" "EasyApp" "$GIT_COMMIT" null cli'
             }
         }
     }
