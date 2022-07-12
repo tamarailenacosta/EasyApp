@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('see variables') {
             steps {
-                echo 'ESTE ES EL GIT_COMMIT $GIT_COMMIT'
+                echo 'ESTE ES EL GIT_COMMIT "$GIT_COMMIT" '
             }
         }
         stage('Vulnerability scan') {
