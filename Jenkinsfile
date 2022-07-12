@@ -1,6 +1,13 @@
 pipeline {
     agent none
-
+    
+    stages {
+        stage('see variables') {
+            steps {
+                sh 'env'
+            }
+        }
+    }
     stages {
         stage('Vulnerability scan') {
             environment {
