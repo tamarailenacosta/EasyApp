@@ -10,6 +10,7 @@ pipeline {
                 sh 'echo esto es 1: $GIT_COMMIT'
                 sh 'echo  esto es 2: "$GIT_COMMIT" '
                 sh 'echo esto es 3: $DEBRICKED_CREDENTIALS_USR'
+                sh 'echo git rev-parse HEAD'
             }
 
             /*agent {
