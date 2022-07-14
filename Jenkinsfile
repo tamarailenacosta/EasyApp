@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'echo esto es : $GIT_COMMIT'
                 sh 'echo  esto es : "${GIT_COMMIT}" '
-                echo 'esto es ${env.GIT_COMMIT}'
+                echo "${env.GIT_COMMIT}"
             }
 
             /*agent {
