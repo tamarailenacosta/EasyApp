@@ -2,15 +2,11 @@ pipeline {
     agent none
 
     stages {
-        stage('checkout') {
-            agent any
-            steps {
-               sh 'echo $GIT_COMMIT'
-            }
-        }
+       
         stage('Vulnerability scan') {
             environment {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
+                COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
             }
 
             agent {
@@ -20,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo $GIT_COMMIT'
+                sh 'echo $COMMIT'
                 sh 'bash /home/entrypoint.sh debricked:scan "$DEBRICKED_CREDENTIALS_USR" "$DEBRICKED_CREDENTIALS_PSW" example-jenkins "$GIT_COMMIT" null cli'
             }
         }
