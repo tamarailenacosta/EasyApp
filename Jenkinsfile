@@ -7,7 +7,7 @@ pipeline {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
             }
             steps {
-                sh 'echo esto es '$GIT_COMMIT' con sh: $GIT_COMMIT'
+                sh 'echo esto es : $GIT_COMMIT'
                 sh 'echo  esto es : "${GIT_COMMIT}" '
                 echo 'esto es ${env.GIT_COMMIT}'
             }
