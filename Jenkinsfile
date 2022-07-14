@@ -3,9 +3,9 @@ pipeline {
     
     stages {
         stage('Vulnerability scan') {
-            environment {
+            /*environment {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
-            }
+            }*/
             steps {
                 sh 'echo esto es : $GIT_COMMIT'
                 sh 'echo  esto es : "${GIT_COMMIT}" '
