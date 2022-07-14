@@ -16,8 +16,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo $COMMIT'
-                sh 'bash /home/entrypoint.sh debricked:scan "$DEBRICKED_CREDENTIALS_USR" "$DEBRICKED_CREDENTIALS_PSW" example-jenkins "$GIT_COMMIT" null cli'
+                sh '1: $COMMIT'
+                sh '2: $GIT_COMMIT'
+                /*sh 'bash /home/entrypoint.sh debricked:scan "$DEBRICKED_CREDENTIALS_USR" "$DEBRICKED_CREDENTIALS_PSW" example-jenkins "$GIT_COMMIT" null cli'*/
             }
         }
     }
