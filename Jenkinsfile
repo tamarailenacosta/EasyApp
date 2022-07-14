@@ -3,11 +3,12 @@ pipeline {
 
     stages {
         stage('checkout') {
-            node('master') {
-                steps {
-                    sh 'echo $GIT_COMMIT'
-                }
+            agent {
+                node
             }
+           steps {
+               sh 'echo $GIT_COMMIT'
+          }
         }
         stage('Vulnerability scan') {
             environment {
