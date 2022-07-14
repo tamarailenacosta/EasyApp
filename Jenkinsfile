@@ -2,6 +2,13 @@ pipeline {
     agent none
 
     stages {
+        stage('checkout') {
+            node('master') {
+                steps {
+                    sh 'echo $GIT_COMMIT'
+                }
+            }
+        }
         stage('Vulnerability scan') {
             environment {
                 DEBRICKED_CREDENTIALS = credentials('debricked-creds')
