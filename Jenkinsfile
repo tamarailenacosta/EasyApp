@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'echo este es el contenido del : $COMMIT'
                 sh 'echo este es el segundo commit: $GIT_COMMIT'
-                sh 'bash /home/entrypoint.sh debricked:scan "$DEBRICKED_CREDENTIALS_USR" "$DEBRICKED_CREDENTIALS_PSW" example-jenkins "$COMMIT" null cli'
+                sh 'bash /home/entrypoint.sh debricked:scan "" "$DEBRICKED_CREDENTIALS_PSW" example-jenkins "$COMMIT" null cli'
             }
         }
     }
