@@ -5,6 +5,7 @@ pipeline {
        
         stage('Vulnerability scan') {
             environment {
+                DEBRICKED_TOKEN = credentials('DEBRICKED_TOKEN')
                 COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
             }
 
