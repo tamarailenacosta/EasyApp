@@ -11,3 +11,4 @@ jobs:
       - run: debricked scan
         env:
           DEBRICKED_TOKEN: ${{ secrets.DEBRICKED_TOKEN }}
+          
