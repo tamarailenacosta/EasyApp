@@ -1,5 +1,4 @@
 services: docker
-
 jobs:
   include:
     - stage: Debricked-scan
