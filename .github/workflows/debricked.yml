@@ -1,5 +1,4 @@
 name: Debricked scan
-
 on: [push]
 
 jobs:
