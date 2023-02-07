@@ -3,10 +3,11 @@ name: Debricked scan
 on: [push]
 
 jobs:
-  vulnerabilities-scan:
+  test:
     runs-on: ubuntu-latest
+    container: debricked/cli
     steps:
-    - uses: actions/checkout@v2
-    - uses: debricked/actions/scan@v1
-      env:
-        DEBRICKED_TOKEN: ${{ secrets.DEBRICKED_TOKEN }}
+      - uses: actions/checkout@v3
+      - run: debricked scan
+        env:
+          DEBRICKED_TOKEN: ${{ secrets.DEBRICKED_TOKEN }}
