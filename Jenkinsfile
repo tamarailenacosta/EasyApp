@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker run -v $(pwd):/root debricked/cli:scan -t "$DEBRICKED_TOKEN"''
+                sh 'docker run -v $(pwd):/root debricked/cli:scan -t "$DEBRICKED_TOKEN" '
             }
         }
     }
