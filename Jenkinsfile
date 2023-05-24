@@ -11,12 +11,12 @@ pipeline {
 
             agent {
                 docker {
-                    image 'debricked/debricked/cli'
-                    args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
+                    image 'debricked/debricked-cli'
+                    //args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
                 }
             }
             steps {
-                sh 'docker run -v $(pwd):/root debricked/cli:scan -t "$DEBRICKED_TOKEN" example-jenkins "$COMMIT" null cli'
+                sh 'docker run -v $(pwd):/root debricked/cli:scan -t "$DEBRICKED_TOKEN"''
             }
         }
     }
