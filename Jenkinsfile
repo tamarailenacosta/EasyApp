@@ -12,7 +12,7 @@ pipeline {
             agent {
                 docker {
                     image 'debricked/cli'
-                    //args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
+                    args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
                 }
             }
             steps {
