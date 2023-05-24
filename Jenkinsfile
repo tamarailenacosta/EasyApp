@@ -16,9 +16,9 @@ pipeline {
 
                 docker {
 
-                    image 'debricked/debricked-cli'
+                    image 'debricked/cli'
 
-                    args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
+                    //args '--entrypoint="" -v ${WORKSPACE}:/data -w /data'
 
                 }
 
@@ -26,7 +26,7 @@ pipeline {
 
             steps {
 
-                sh 'bash /home/entrypoint.sh debricked:scan "" "$DEBRICKED_TOKEN" example-jenkins "$GIT_COMMIT" null cli'
+                sh 'docker run v $(pwd):/root  debricked/cli:scan -t DEBRICKED_TOKEN'
 
             }
 
