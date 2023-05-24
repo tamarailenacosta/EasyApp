@@ -13,7 +13,7 @@ pipeline {
                 }
             }
             steps {
-                sh "docker run -v ${WORKSPACE}:/root debricked/cli:scan -t ${DEBRICKED_TOKEN}" // Update the command to use environment variable
+                sh " debricked/cli:scan -t ${DEBRICKED_TOKEN}" // Update the command to use environment variable
             }
         }
     }
