@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker run -v $(pwd):/root debricked scan . -t "$DEBRICKED_TOKEN" '
+                sh 'bash /home/entrypoint.sh debricked scan -t "$DEBRICKED_TOKEN" '
             }
         }
     }
