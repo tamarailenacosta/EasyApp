@@ -13,7 +13,7 @@ pipeline {
                 }
             }
             steps {
-                sh " debricked scan -t ${DEBRICKED_TOKEN}" // Update the command to use environment variable
+                sh " debricked scan // -t ${DEBRICKED_TOKEN}"  Update the command to use environment variable
             }
         }
     }
