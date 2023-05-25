@@ -9,7 +9,7 @@ pipeline {
             agent {
                 docker {
                     image 'debricked/cli'
-                    args '--entrypoint=""' // Remove the commented out section
+                   // args '--entrypoint=""'
                 }
             }
             steps {
