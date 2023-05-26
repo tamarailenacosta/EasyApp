@@ -6,14 +6,13 @@ pipeline {
             environment {
                 DEBRICKED_TOKEN = credentials('DEBRICKED_TOKEN')
             }
-            agent {
-                docker {
-                    image 'debricked/cli'
-                   // args '--entrypoint=""'
-                }
-            }
-            steps {
-                sh " debricked scan "// -t ${DEBRICKED_TOKEN}"  Update the command to use environment variable
+         steps {
+                sh '''
+                    # Descargar y extraer el binario de Debricked
+                    curl -L https://github.com/debricked/cli/releases/latest/download/cli_linux_x86_64.tar.gz | tar -xz
+                    cd debricked
+                   ./debricked scan
+                '''
             }
         }
     }
