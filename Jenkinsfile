@@ -8,9 +8,10 @@ pipeline {
             }
             
          agent { 
-              docker:
+             docker{
                   - image 'cimg/base'
                   - args '-v $HOME/repo:/home/go/repo'
+             }
             }
          steps {
                 sh '''
