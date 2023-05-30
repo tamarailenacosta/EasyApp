@@ -13,6 +13,6 @@ pipeline {
     }
 
     environment {
-        DEBRICKED_TOKEN = "$DEBRICKED_TOKEN"
+        DEBRICKED_TOKEN = credentials('DEBRICKED_TOKEN')
     }
 }
