@@ -1,8 +1,12 @@
 pipeline {
     agent any
+    
+   environment {
+        DEBRICKED_TOKEN = credentials('DEBRICKED_TOKEN')
+    }
 
     stages {
-        stage('Scan') {
+        stage('Debricked Scan') {
             steps {
                 script {
                     sh 'curl -L https://github.com/debricked/cli/releases/latest/download/cli_linux_x86_64.tar.gz | tar -xz debricked'
@@ -10,9 +14,5 @@ pipeline {
                 }
             }
         }
-    }
-
-    environment {
-        DEBRICKED_TOKEN = credentials('DEBRICKED_TOKEN')
     }
 }
