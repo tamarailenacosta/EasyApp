@@ -15,11 +15,11 @@ spec:
         parameters:
           - name: git-url
           - name: debricked-token
-        artifacts:
-          - name: repository
-            path: /repository
-            git: # For more details, see: https://github.com/argoproj/argo-workflows/blob/master/examples/input-artifact-git.yaml
-              repo: "{{inputs.parameters.git-url}}"
+      artifacts:
+        - name: repository
+          path: /repository
+          git: # For more details, see: https://github.com/argoproj/argo-workflows/blob/master/examples/input-artifact-git.yaml
+            repo: "{{inputs.parameters.git-url}}"
       container:
         name: 'debricked-scan'
         image: debricked/cli
